@@ -1874,3 +1874,100 @@ footer {
     opacity: 0.6;
     font-size: 0.9rem;
 }
+
+/* ==================== Responsive Fixes for New Layouts ============================ */
+
+/* Tablet & Smaller Laptops */
+@media(max-width: 991px) {
+    .skill-web {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablets & Large Phones */
+@media(max-width: 768px) {
+
+    /* Skills */
+    .skill-web {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    /* Footer */
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-brand p {
+        margin: 0 auto 2rem;
+    }
+
+    .footer-socials {
+        justify-content: center;
+    }
+
+    .footer-contact ul li {
+        justify-content: center;
+    }
+
+    .beautified-footer {
+        padding: 4rem 5% 2rem;
+    }
+}
+
+/* Mobile Phones (530px and below) */
+@media(max-width: 530px) {
+
+    /* Hero Image Scale Fix */
+    .img-hero .rotate-text {
+        transform: scale(0.6) !important;
+        transform-origin: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        translate: -50% -50%;
+        z-index: 1;
+    }
+
+    /* Skills Grid */
+    .skill-web {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .skill-item {
+        width: 100px;
+        height: 100px;
+    }
+
+    .skill-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .skill-item::before {
+        font-size: 0.8rem;
+        bottom: -25px;
+    }
+
+    /* Contact Form Layout */
+    .contact-form .input-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-box {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Footer Spacing */
+    .beautified-footer {
+        padding: 3rem 5% 1rem;
+    }
+
+    .footer-brand .logo {
+        font-size: 1.5rem;
+    }
+}
