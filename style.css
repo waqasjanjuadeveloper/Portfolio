@@ -284,14 +284,18 @@ section {
     min-height: 100vh;
     height: 100%;
     width: 100%;
-    display: flex;
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
     grid-gap: 4em;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-info {
     margin-top: 3rem;
+    position: relative;
+    z-index: 2;
 }
 
 .hero-info h3 {
@@ -465,41 +469,60 @@ section {
     animation: animate 1s linear infinite;
 }
 
+/* ── Hero image container – centered with ring around it ── */
 .img-hero {
     position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     animation: floatImage 4s ease-in-out infinite;
     animation-delay: 3s;
+    z-index: 2;
 }
 
 .img-hero img {
     position: relative;
-    width: 400px;
-    height: auto;
+    /* Mathematics for perfect fit with the 402px blue ring */
+    width: 402px;
+    height: 402px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    border: 5px solid #00aaff;
+    /* Requested blue border */
+    padding: 2px;
+    background: #00aaff;
+    display: block;
     z-index: 10;
-
 }
 
 
+/* ── Rotating ring decoration ── */
 .rotate-text {
     position: absolute;
-    top: 4%;
-    left: -53px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    padding: 2rem;
+    overflow: visible;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .rotate-text span {
     position: relative;
     width: 442px;
     height: 442px;
-    background: red;
+    background: #00aaff;
+    /* Consistent blue theme */
     border: 6px solid #eaeef0;
     border-radius: 50%;
     z-index: 1;
-    overflow: hidden;
+    overflow: visible;
 }
 
 .rotate-text span::before {
@@ -517,6 +540,7 @@ section {
     background: var(--gradient-color-bg);
     filter: blur(5px);
     animation: animate 2s linear infinite;
+    border-radius: 50%;
 }
 
 
@@ -532,11 +556,12 @@ section {
 
 .text b {
     position: absolute;
-    transform-origin: 0 247px;
+    transform-origin: 0 245px;
     display: block;
     top: 0;
     left: 50%;
     font-size: 1.2rem;
+    color: #000;
 }
 
 /* ==================== About section css code ============================ */
@@ -1298,17 +1323,17 @@ footer {
         display: block;
     }
 
-    /* make the hamburger/menu icon bars white on mobile */
+    /* make the hamburger/menu icon bars black on mobile for both light and dark modes */
     .menu-icon .bar,
     .menu-icon::before,
     .menu-icon::after {
-        background: #fff !important;
+        background: #000 !important;
     }
 
-    /* ensure active transformed bars remain white */
+    /* ensure active transformed bars remain black */
     .menu-icon.active::before,
     .menu-icon.active::after {
-        background: #fff !important;
+        background: #000 !important;
     }
 
     header .logo,
@@ -1886,6 +1911,47 @@ footer {
 
 /* Tablets & Large Phones */
 @media(max-width: 768px) {
+    .home {
+        grid-template-columns: 1fr;
+        grid-gap: 2em;
+        text-align: center;
+        padding-top: 120px;
+        min-height: auto;
+    }
+
+    .hero-info {
+        order: 2;
+    }
+
+    .img-hero {
+        order: 1;
+        width: 100%;
+        height: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 2rem;
+    }
+
+    .img-hero .rotate-text {
+        transform: translate(-50%, -50%) scale(0.8) !important;
+    }
+
+    .img-hero img {
+        width: 322px;
+        height: 322px;
+        border: 4px solid #00aaff;
+        padding: 2px;
+        background: #00aaff;
+    }
+
+    .btn-box {
+        margin: 2rem auto;
+    }
+
+    .social-media {
+        margin: 0 auto;
+    }
 
     /* Skills */
     .skill-web {
@@ -1920,15 +1986,25 @@ footer {
 /* Mobile Phones (530px and below) */
 @media(max-width: 530px) {
 
-    /* Hero Image Scale Fix */
+    /* Responsive Hero Scaling - Matching Tablet colors/style precisely */
+    .home {
+        padding-top: 100px;
+    }
+
+    .img-hero {
+        height: 320px;
+    }
+
     .img-hero .rotate-text {
-        transform: scale(0.6) !important;
-        transform-origin: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        translate: -50% -50%;
-        z-index: 1;
+        transform: translate(-50%, -50%) scale(0.55) !important;
+    }
+
+    .img-hero img {
+        width: 221px;
+        height: 221px;
+        border: 3px solid #00aaff;
+        padding: 1px;
+        background: #00aaff;
     }
 
     /* Skills Grid */
