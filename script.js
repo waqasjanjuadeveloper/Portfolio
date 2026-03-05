@@ -186,7 +186,7 @@ const sections = document.querySelectorAll('section');
 
 function activeMenu() {
     let len = sections.length;
-    while (--len && window.scrollY + 97 < sections[len].offsetTop) {}
+    while (--len && window.scrollY + 97 < sections[len].offsetTop) { }
     menuLi.forEach(sec => sec.classList.remove("active"));
     if (menuLi[len]) {
         menuLi[len].classList.add("active");
@@ -220,3 +220,33 @@ window.addEventListener("load", () => {
     calcScrollValue();
     activeMenu();
 });
+
+/*======================= EmailJS Integration ============================ */
+(function () {
+    emailjs.init("rjSBdMG3FBTzhzbmf");
+})();
+
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+        submitBtn.innerHTML = "Sending... <i class='bx bx-loader-alt bx-spin'></i>";
+        submitBtn.disabled = true;
+
+        emailjs.sendForm('service_hh8z96c', 'template_6ketpau', this)
+            .then(() => {
+                alert('Message sent successfully!');
+                contactForm.reset();
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            }, (err) => {
+                alert('Failed to send message: ' + JSON.stringify(err));
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
+            });
+    });
+}

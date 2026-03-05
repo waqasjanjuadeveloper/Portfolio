@@ -86,6 +86,23 @@ body.dark-theme .input-field textarea:focus {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Dark mode contact form contrast */
+body.dark-theme .input-field input,
+body.dark-theme .input-field textarea {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-theme .input-field input::placeholder,
+body.dark-theme .input-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark-theme .input-field input:focus,
+body.dark-theme .input-field textarea:focus {
+    background: rgba(255, 255, 255, 0.1);
+}
+
 a {
     text-decoration: none;
     color: var(--main-color);
@@ -1420,14 +1437,13 @@ footer {
     }
 
     .img-hero .rotate-text {
-        transform: scale(0.7);
-        /* shrink the ring/text */
+        transform: scale(0.85) !important;
         transform-origin: center;
         position: absolute;
         top: 50%;
         left: 50%;
         translate: -50% -50%;
-        /* keep centered around image */
+        z-index: 1;
     }
 
     /* Use CSS Grid for skills at tablet sizes to ensure proper wrapping and centering */

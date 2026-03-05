@@ -10,6 +10,8 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 
 <body>
@@ -82,7 +84,7 @@
                 <img src="img/malik.png" alt="">
                 <div class="rotate-text">
                     <div class="text">
-                        <p>I'm a CrossPlatform  App developer and a freelancer.</p>
+                        <p>I'm a CrossPlatform App developer and a freelancer.</p>
                     </div>
                     <span><i></i></span>
                 </div>
@@ -379,20 +381,21 @@
                     <form class="contact-form" id="contactForm">
                         <div class="input-grid">
                             <div class="input-field">
-                                <input type="text" id="name" placeholder="Full Name" required>
+                                <input type="text" id="name" name="from_name" placeholder="Full Name" required>
                                 <small class="error-msg"></small>
                             </div>
                             <div class="input-field">
-                                <input type="email" id="email" placeholder="Email Address" required>
+                                <input type="email" id="email" name="from_email" placeholder="Email Address" required>
                                 <small class="error-msg"></small>
                             </div>
                         </div>
                         <div class="input-field full-width">
-                            <input type="text" id="subject" placeholder="Subject" required>
+                            <input type="text" id="subject" name="subject" placeholder="Subject" required>
                             <small class="error-msg"></small>
                         </div>
                         <div class="input-field full-width">
-                            <textarea id="message" placeholder="Your Message" required rows="5"></textarea>
+                            <textarea id="message" name="message" placeholder="Your Message" required
+                                rows="5"></textarea>
                             <small class="error-msg"></small>
                         </div>
                         <button type="submit" class="btn primary-btn">
@@ -479,4 +482,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>
